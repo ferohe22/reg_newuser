@@ -13,7 +13,9 @@ const tableKey = base(process.env.AIRTABLE_TABLE_NAME);
 const tableEmp = base(process.env.AIRTABLE_TABLE_NAME_EMP);
 
 app.use(express.json());
-app.use(express.static(path.join(__dirname, '..', 'frontend')));
+
+// Servir archivos estáticos desde la carpeta 'frontend'
+app.use(express.static(path.join(__dirname, 'frontend')));
 
 // Ruta para validar email
 app.post('/validar-email', async (req, res) => {
@@ -63,7 +65,16 @@ app.post('/registrar', async (req, res) => {
     }
 });
 
-// Añadir una ruta catch-all para manejar todas las rutas no definidas
+// Rutas específicas para CSS y JS
+app.get('/styles.css', (req, res) => {
+    res.sendFile(path.join(__dirname, 'frontend', 'styles.css'));
+});
+
+app.get('/script.js', (req, res) => {
+    res.sendFile(path.join(__dirname, 'frontend', 'script.js'));
+});
+
+// Ruta catch-all para SPA (movida al final)
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'frontend', 'index.html'));
 });
