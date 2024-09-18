@@ -1,0 +1,24 @@
+# Dependencias
+node_modules/
+
+# Archivos de entorno
+.env
+
+# Archivos de registro
+*.log
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos de configuración del IDE/editor
+.vscode/
+.idea/
+
+# Archivos de compilación
+/dist
+/build
+
+# Otros
+*.tmp
+*.temp
