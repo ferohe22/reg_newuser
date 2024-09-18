@@ -63,6 +63,11 @@ app.post('/registrar', async (req, res) => {
     }
 });
 
+// Añadir una ruta catch-all para manejar todas las rutas no definidas
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'frontend', 'index.html'));
+});
+
 app.listen(port, () => {
     console.log(`Servidor corriendo en http://localhost:${port}`);
 });
